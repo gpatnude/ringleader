@@ -1,1 +1,6 @@
+# IGNORE HIDDEN FOLDERS:
+.*
+
+# IGNORE COMMON IDE FILES: 
+/bin/
 /target/
