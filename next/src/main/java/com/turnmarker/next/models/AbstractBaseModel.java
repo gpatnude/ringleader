@@ -1,5 +1,9 @@
 package com.turnmarker.next.models;
 
-public class AbstractBaseModel {
+import com.turnmarker.next.AbstractBaseObject;
 
+public class AbstractBaseModel extends AbstractBaseObject {
+
+	
+		
 }

@@ -14,25 +14,22 @@ import com.turnmarker.next.models.ResponseModel;
 @RestController
 public class ResponseController extends AbstractBaseController {
 
-	private static final String template = "connect";
-
 	private final AtomicLong counter = new AtomicLong();
 
 	@RequestMapping("/")
 	public ResponseModel responseModel(@RequestParam(value = "name", defaultValue = "dwap") String name, @RequestHeader HttpHeaders headers) {
 
-		// TRACE:
+		// VALIDATION:
 		this.inspectHeader(headers);
 		
 		if (! headers.containsKey("uid")) {
 		
+			trace("Adding 'unique-id' to header.");
 			headers.add("uid", UUID.randomUUID().toString());
 			
 		}
-		
 
-		String token = "";
-		return new ResponseModel(counter.incrementAndGet(), template, token);
+		return new ResponseModel(counter.incrementAndGet());
 
 	}
 

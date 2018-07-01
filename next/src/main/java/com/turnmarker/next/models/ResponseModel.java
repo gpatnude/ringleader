@@ -2,58 +2,27 @@ package com.turnmarker.next.models;
 
 import java.util.UUID;
 
-public class ResponseModel {
+public class ResponseModel extends AbstractBaseModel {
 	
-	private UUID uuid;
-	
-    private final long id;
-    
-    private final String content;
-    
-    private final String token;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9033531652815075843L;
 
-    public ResponseModel(long id, String content, String token) {
+	public static final UUID uuid = UUID.randomUUID();
+	
+	private long id;
+	
+    public ResponseModel(long id) {
     
     	this.id = id;
-        this.content = content;
-        this.token = token;
-    
+
     }
 
     public long getId() {
     
     	return id;
     
-    }
-
-    public String getContent() {
-    
-    	return content;
-    
-    }
-    
-	public String getToken() {
-		
-		return token;
-	
-	}
-
-	protected void setUniqueIdentifier(UUID newuid)  {
-    	
-    	this.uuid = newuid;
-    	
-    }
-    
-    public UUID getUniqueIdentifier() {
-    	
-    	if (null ==  this.uuid) {
-    		
-    		this.setUniqueIdentifier(UUID.randomUUID());
-    		
-    	}
-    	
-    	return this.uuid;
-    	
     }
 
 }
