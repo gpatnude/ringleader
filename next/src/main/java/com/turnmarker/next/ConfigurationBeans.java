@@ -4,6 +4,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import com.turnmarker.next.beans.AuthenticationFilterBean;
+import com.turnmarker.next.models.RingGraphModel;
 
 public class ConfigurationBeans {
 
@@ -28,6 +29,13 @@ public class ConfigurationBeans {
 		// AND RETURN:
 		return frbean;
 
+	}
+	
+	@Bean
+	public RingGraphModel getRingGraphModel() {
+		
+		return RingGraphModel.getFactory();
+		
 	}
 
 }

@@ -3,26 +3,47 @@ package com.turnmarker.next.models;
 import java.util.UUID;
 
 public class ResponseModel extends AbstractBaseModel {
-	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -9033531652815075843L;
+	private static final long serialVersionUID = 8097279154433937277L;
 
 	public static final UUID uuid = UUID.randomUUID();
-	
+
 	private long id;
-	
-    public ResponseModel(long id) {
-    
-    	this.id = id;
 
-    }
+	private RingGraphModel ringGraphModel = new RingGraphModel();
 
-    public long getId() {
-    
-    	return id;
-    
-    }
+	public ResponseModel(long id) {
+
+		this.id = id;
+
+	}
+
+	public long getId() {
+
+		return id;
+
+	}
+
+	/**
+	 * @return the ringGrapModel
+	 */
+	public RingGraphModel getRingGraphModel() {
+
+		return ringGraphModel;
+
+	}
+
+	/**
+	 * @param ringGrapModel
+	 *            the ringGrapModel to set
+	 */
+	public void setRingGraphModel(RingGraphModel model) {
+
+		this.ringGraphModel = model;
+
+	}
 
 }

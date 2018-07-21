@@ -3,6 +3,7 @@ package com.turnmarker.next;
 import java.io.Serializable;
 import java.util.Date;
 
+@SuppressWarnings("serial")
 public abstract class AbstractBaseObject implements Serializable {
 
 	
