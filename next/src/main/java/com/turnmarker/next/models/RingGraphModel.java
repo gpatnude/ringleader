@@ -132,5 +132,11 @@ public class RingGraphModel extends AbstractBaseModel {
 		this.metaModel = metaModel;
 		
 	}
+
+	public void saySomething(String something) {
+
+		this.trace(something);
+		
+	}
 	
 }

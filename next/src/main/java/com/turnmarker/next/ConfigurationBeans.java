@@ -14,7 +14,7 @@ public class ConfigurationBeans {
 
 	}
 
-	// @Bean
+	@Bean
 	public FilterRegistrationBean<AuthenticationFilterBean> authenticationFilterBean() {
 
 		// INSTANTIATE:
@@ -23,8 +23,8 @@ public class ConfigurationBeans {
 		// CONFIGURATE: 
 		frbean.setFilter(new AuthenticationFilterBean());
 		
-		// In case you want the filter to apply to specific URL patterns only
-		// registration.addUrlPatterns("/filtered-paths/*");
+		// RESTRICT THIS FILTER TO SPECIFIC PATHS:
+		// frbean.addUrlPatterns("/filtered/path/*", "/additional/filtered/paths/*");
 		
 		// AND RETURN:
 		return frbean;

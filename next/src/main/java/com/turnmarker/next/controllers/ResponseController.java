@@ -1,7 +1,5 @@
 package com.turnmarker.next.controllers;
 
-import java.util.Enumeration;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpSession;
@@ -63,7 +61,7 @@ public class ResponseController extends AbstractBaseController {
 		this.inspectHeader(headers);
 
 		// CALL:
-		rmc.doSomething();
+		rmc.saySomething("I really need to pee...");
 
 		// 
 		return new ResponseModel(counter.incrementAndGet());
