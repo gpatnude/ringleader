@@ -10,27 +10,36 @@
 
 	<script type="application/javascript">
 	
-	function init() {
-		
-		// document.getElementById("content").innerHTML = "JS:EHLO";
-		write("content", "JS:EHLO");
-		
-	};		
-	
-	function callback(data) {
-		
-		write("content", data);
-				
-	}
-	
-	function write(ele, data) {
-		
-		document.getElementById(ele).innerHTML = data;
-		
-	}
+	// GLOBAL:
+	const pollingtime = 5000;
 	
 	const devnull = 'http://localhost:8080/dev/null?TURN=34555557888';
 
+	// OFF BY DEFAULT:
+	// ON: var interrupt=self.setInterval(turnmarker, 5000);
+	// OFF:
+	var interrupt;
+
+	// #########################################################################################################
+	// #########################################################################################################
+	// #########################################################################################################
+	// #########################################################################################################
+	// #########################################################################################################
+	
+	/*
+		FUNCTIONS
+	
+	
+	
+	*/
+		
+	function init() {
+		
+		// document.getElementById("content").innerHTML = "JS:EHLO";
+		write("content", "JS:NRUT");
+		
+	};		
+	
 	function turnmarker() { 
 		
 		// DISPLAY:
@@ -69,22 +78,39 @@
 		  
 	} 
 	
+	function callback(data) {
+		
+		write("content", data);
+				
+	}
+	
+	function write(ele, data) {
+		
+		document.getElementById(ele).innerHTML = data;
+		
+	}
+	
 	</script>
 
 <head>
 
-<body onload="init()">
+<body onload="javascript:init()">
 
 	<p:spinner />
 
 	<h2>
 	
-		<a href="./">EHLO?</a>
+		<a href="./">NRUT?</a>
 		
 	</h2>
 	
-	<button type="submit" onclick="javascript:turnmarker()">Next</button>
-		
+	<button style="width: 72px; height: 36px; background-color: #red;" type="submit" onclick="interrupt=window.setInterval(turnmarker, pollingtime); return false;">Start</button>
+	<button style="width: 72px; height: 36px;" type="submit" onclick="window.clearInterval(interrupt); return false;">Stop</button>
+	<button style="width: 72px; height: 36px;" type="submit" onclick="javascript:turnmarker()">Next</button>
+	<p />
+	
+	<p><a href="#" onclick="interrupt=window.setInterval(turnmarker, pollingtime);return false;">Start</a> | <a href="#" onclick="window.clearInterval(interrupt);return false;">Stop</a></p>
+			
 	<div id="centerbox">I am center-box.</div>	
 	
 	<h3>
