@@ -8,12 +8,25 @@
 			
 	 -->
 
+	<style>
+	
+	#outeredge, .outeredge {
+	
+		width: 900px;
+		backgound-color: #990000;
+	
+	}
+	
+	</style> 
+	
 	<script type="application/javascript">
 	
 	// GLOBAL:
 	const pollingtime = 5000;
 	
-	const devnull = 'http://localhost:8080/dev/null?TURN=34555557888';
+	// const devnull = 'http://localhost:8080/dev/null?TURN=34555557888';
+	
+	const devnull = 'http://localhost:8080/list?TURN=34555557888';
 
 	// OFF BY DEFAULT:
 	// ON: var interrupt=self.setInterval(turnmarker, 5000);
@@ -92,9 +105,11 @@
 	
 	</script>
 
-<head>
+</head>
 
-<body onload="javascript:init()">
+<body onload="javascript:init(); return false;">
+
+<div id="outeredge" style="width: 770px; margin: auto; border: 1px solid #CCCCCC; border-radius: 7px; box-shadow: 7px 7px 11px #CCCCCC; padding: 11px;">
 
 	<p:spinner />
 
@@ -107,9 +122,12 @@
 	<button style="width: 72px; height: 36px; background-color: #red;" type="submit" onclick="interrupt=window.setInterval(turnmarker, pollingtime); return false;">Start</button>
 	<button style="width: 72px; height: 36px;" type="submit" onclick="window.clearInterval(interrupt); return false;">Stop</button>
 	<button style="width: 72px; height: 36px;" type="submit" onclick="javascript:turnmarker()">Next</button>
+	
 	<p />
 	
 	<p><a href="#" onclick="interrupt=window.setInterval(turnmarker, pollingtime);return false;">Start</a> | <a href="#" onclick="window.clearInterval(interrupt);return false;">Stop</a></p>
+			
+	<hr style="width: 100%; height: 0.5px; color: #C4C4C4; box-shadow: 7px 7px 11px #CCCCCC; " />	
 			
 	<div id="centerbox">I am center-box.</div>	
 	
@@ -118,6 +136,8 @@
 		<div id="content"></div>
 	
 	</h3>
+
+</div>
 
 <body>
 

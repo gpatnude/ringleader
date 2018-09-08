@@ -1,5 +1,8 @@
 package com.turnmarker.next.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.turnmarker.next.enums.AvailableList;
 import com.turnmarker.next.models.ResponseModel;
 import com.turnmarker.next.models.RingGraphModel;
 
@@ -52,6 +56,49 @@ public class ResponseController extends AbstractBaseController {
 		
 		// return new ResponseModel(counter.incrementAndGet());
 
+	}
+	
+	@RequestMapping("/list")
+	public ResponseModel getGeneralList(@RequestParam(value = "alist", defaultValue = "EVERYTHING") AvailableList alist) {
+		
+		// GENERATE THE RESPONSE:		
+		ResponseModel rm = new ResponseModel(counter.incrementAndGet());
+		
+		// REJUVENATE:
+		rm.setRingGraphModel(rmc);
+		
+		switch (alist) {
+
+			case GAMES_PENDING:
+			case GAMES_FINISHED:
+			case GAMES_INPLAY:
+				
+				// rm.getRingGraphModel().getMetaModel().setCollection(al);
+				rm.getRingGraphModel().getMetaModel().getCollection().clear();
+				
+				break;
+
+			// LAST:
+			default:
+			case EVERYTHING:
+			
+				List<AvailableList> al = Arrays.asList(AvailableList.values());
+				rm.getRingGraphModel().getMetaModel().setCollection(al);				
+				break;
+				
+		}
+		
+		if (alist == AvailableList.EVERYTHING) {
+			
+			// 
+			trace("I really really need to pee...");
+			
+			
+		} // ELSE:
+		
+		// AND RETURN:
+		return rm;
+		
 	}
 
 	@RequestMapping("/dev/null")

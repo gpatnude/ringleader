@@ -2,9 +2,9 @@ package com.turnmarker.next.models;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -24,6 +24,21 @@ public class MetaModel extends AbstractBaseModel {
 	
 	protected Properties metaTags = new Properties();
 	
+	protected List<?> collection = new ArrayList<>(); 
+	
+	public List<?> getCollection() {
+	
+		return collection;
+		
+	}
+
+	
+	public void setCollection(List<?> collection) {
+	
+		this.collection = collection;
+
+	}
+
 	public MetaModel() {
 		
 		this.getMetaTags().put(key, String.valueOf(MetaModel.serialVersionUID));
