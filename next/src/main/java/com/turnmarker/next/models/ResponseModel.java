@@ -2,6 +2,9 @@ package com.turnmarker.next.models;
 
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ResponseModel extends AbstractBaseModel {
 
 	/**
@@ -14,7 +17,7 @@ public class ResponseModel extends AbstractBaseModel {
 	private long id;
 
 	private RingGraphModel ringGraphModel = new RingGraphModel();
-
+	
 	public ResponseModel(long id) {
 
 		this.id = id;
@@ -44,6 +47,21 @@ public class ResponseModel extends AbstractBaseModel {
 
 		this.ringGraphModel = model;
 
+	}
+
+	// LOGGER IMPLEMENTATION:
+	protected Logger logger = LoggerFactory.getLogger(PayloadModel.class);
+	
+	protected Logger getLogger() {
+	
+		return logger;
+		
+	}
+
+	protected void setLogger(Logger logger) {
+	
+		this.logger = logger;
+		
 	}
 
 }

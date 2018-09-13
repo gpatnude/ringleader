@@ -5,6 +5,8 @@ import java.time.ZonedDateTime;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -138,5 +140,20 @@ public class RingGraphModel extends AbstractBaseModel {
 		this.trace(something);
 		
 	}
+	
+	// LOGGER IMPLEMENTATION:
+	protected Logger logger = LoggerFactory.getLogger(PayloadModel.class);
+	
+	protected Logger getLogger() {
+	
+		return logger;
+	}
+
+	
+	protected void setLogger(Logger logger) {
+	
+		this.logger = logger;
+	}
+	
 	
 }

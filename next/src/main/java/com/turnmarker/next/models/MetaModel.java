@@ -8,6 +8,8 @@ import java.util.Properties;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MetaModel extends AbstractBaseModel {
 
@@ -26,6 +28,22 @@ public class MetaModel extends AbstractBaseModel {
 	
 	protected List<?> collection = new ArrayList<>(); 
 	
+	protected Logger logger = LoggerFactory.getLogger(MetaModel.class);
+	
+	
+	protected Logger getLogger() {
+	
+		return logger;
+	}
+
+
+	
+	protected void setLogger(Logger logger) {
+	
+		this.logger = logger;
+	}
+
+
 	public List<?> getCollection() {
 	
 		return collection;

@@ -4,6 +4,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import com.turnmarker.next.beans.AuthenticationFilterBean;
+import com.turnmarker.next.models.DistributedSessionModel;
 import com.turnmarker.next.models.RingGraphModel;
 
 public class ConfigurationBeans {
@@ -29,6 +30,13 @@ public class ConfigurationBeans {
 		// AND RETURN:
 		return frbean;
 
+	}
+	
+	@Bean
+	public DistributedSessionModel distributedSessionModel() {
+		
+		return DistributedSessionModel.getInstance();
+		
 	}
 	
 	@Bean

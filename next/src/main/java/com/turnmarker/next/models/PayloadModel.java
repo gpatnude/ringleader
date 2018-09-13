@@ -5,6 +5,8 @@ import java.time.ZonedDateTime;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PayloadModel extends AbstractBaseModel {
 
@@ -20,6 +22,8 @@ public class PayloadModel extends AbstractBaseModel {
 	protected long identity = RandomUtils.nextLong();
 	
 	protected ZonedDateTime timestamp = ZonedDateTime.now(ZoneOffset.UTC);
+	
+	protected Logger logger = LoggerFactory.getLogger(PayloadModel.class);
 
 	/**
 	 * @return the identity
@@ -84,5 +88,17 @@ public class PayloadModel extends AbstractBaseModel {
 		return HashCodeBuilder.reflectionHashCode(this);
 
 	}
+
 	
+	protected Logger getLogger() {
+	
+		return logger;
+	}
+
+	
+	protected void setLogger(Logger logger) {
+	
+		this.logger = logger;
+	}
+
 }

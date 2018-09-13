@@ -3,9 +3,12 @@ package com.turnmarker.next;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.slf4j.Logger;
+
 @SuppressWarnings("serial")
 public abstract class AbstractBaseObject implements Serializable {
-
+	
+	protected abstract Logger getLogger();
 	
 	// ABSTRACT METHOD DECLARATIONS HERE: 
 
@@ -16,7 +19,7 @@ public abstract class AbstractBaseObject implements Serializable {
 	 */
 	protected void trace(String message) {
 		
-		System.out.println(String.format("%s --> %s", new Date(), message));
+		getLogger().trace(String.format("%s --> %s", new Date(), message));
 		
 	}
 	

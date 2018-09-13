@@ -1,3 +1,5 @@
+
+
 package com.turnmarker.next.controllers;
 
 import java.util.ArrayList;
@@ -7,6 +9,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -31,8 +35,10 @@ public class ResponseController extends AbstractBaseController {
 
 	private final AtomicLong counter = new AtomicLong();
 	
-	  @Autowired
-	  private HttpSession httpSession;	
+	protected Logger logger = LoggerFactory.getLogger(ResponseController.class);
+	
+	@Autowired
+	private HttpSession httpSession;	
 
 	@RequestMapping("/")
 	public ResponseModel responseModel(@RequestParam(value = "name", defaultValue = "dwap") String name, @RequestHeader HttpHeaders headers) {
@@ -74,7 +80,8 @@ public class ResponseController extends AbstractBaseController {
 			case GAMES_INPLAY:
 				
 				// rm.getRingGraphModel().getMetaModel().setCollection(al);
-				rm.getRingGraphModel().getMetaModel().getCollection().clear();
+				// rm.getRingGraphModel().getMetaModel().getCollection().clear();
+				trace("This isn't funny...");
 				
 				break;
 
@@ -91,7 +98,11 @@ public class ResponseController extends AbstractBaseController {
 		if (alist == AvailableList.EVERYTHING) {
 			
 			// 
-			trace("I really really need to pee...");
+			String s = "AvailableList.EVERYTHING: ";
+			trace(s);
+			
+			// RETAIN:
+			getLogger().trace(s);
 			
 			
 		} // ELSE:
@@ -113,6 +124,14 @@ public class ResponseController extends AbstractBaseController {
 		// 
 		return new ResponseModel(counter.incrementAndGet());
 
+	}
+
+	@Override
+	public Logger getLogger() {
+
+		// 
+		return logger;
+		
 	}
 
 }
