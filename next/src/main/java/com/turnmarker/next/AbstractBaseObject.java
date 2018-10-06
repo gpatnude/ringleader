@@ -13,7 +13,7 @@ public abstract class AbstractBaseObject implements Serializable {
 	// ABSTRACT METHOD DECLARATIONS HERE: 
 
 	/** 
-	 * This is a global method that provide a convenience mechanism to 'trace' application flow -- this is not an application logger in the classic sense -- 
+	 * This is a global method that provide a convenience mechanism to 'trace' application flow -- this is not an application _LOGGER in the classic sense -- 
 	 * 
 	 * @param message
 	 */

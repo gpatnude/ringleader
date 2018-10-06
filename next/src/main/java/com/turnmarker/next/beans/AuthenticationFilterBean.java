@@ -1,6 +1,19 @@
 
 package com.turnmarker.next.beans;
 
+import java.io.IOException;
+import java.util.Map;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +22,6 @@ import org.springframework.stereotype.Component;
 
 import com.turnmarker.next.models.DistributedSessionModel;
 import com.turnmarker.next.models.PayloadModel;
-
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
 
 @Component
 @Order(0)
@@ -35,7 +37,7 @@ public class AuthenticationFilterBean extends AbstractBean implements Filter {
 
 	// TODO: CHANGE THIS SO THAT SESSION's ARE STORED/RETRIEVED FROM A DISTRIBUTED-SESSION-MAP:
 	@Autowired
-	private DistributedSessionModel sessions; // = DistributedSessionModel.getInstance();
+	private DistributedSessionModel dsm; // = DistributedSessionModel.getInstance();
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -43,11 +45,11 @@ public class AuthenticationFilterBean extends AbstractBean implements Filter {
 		// CAST INTO SOMETHING WE CAN MANIPULATE:
 		HttpServletRequest req = (HttpServletRequest) request;
 		Map<String, String[]> params = request.getParameterMap();
-
+		
 		// SESSION's ARE STORED/RETRIEVED FROM THE DISTRIBUTED-SESSION-MAP:
 		HttpSession session = req.getSession(false);
-
-		if ((null != session) && (sessions.contains(session.getId()))) {
+		
+		if ((null != session) && (dsm.contains(session.getId()))) {
 
 			getLogger().warn("I found your session: " + session.getId());
 
